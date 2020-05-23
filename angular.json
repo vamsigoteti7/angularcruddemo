@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angularcruddemo"
+    }
+  },
+  "defaultProject": "angularcruddemo",
+  "cli": {
+    "analytics": "18312d72-1b62-4d43-bd73-779c9bf01377"
+  }
 }
