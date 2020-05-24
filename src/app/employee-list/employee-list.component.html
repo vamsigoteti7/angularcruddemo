@@ -1,7 +1,7 @@
 <div class="col-md-6">
   <h4>Employees List</h4>
-  
-  <ul *ngIf="employees" class="list-group">
+
+  <!-- <ul *ngIf="employees" class="list-group">
     <li
       class="list-group-item"
       *ngFor="let employee of employees.data; let i = index"
@@ -9,9 +9,21 @@
     >
       {{ employee.employee_name }}
     </li>
-  </ul>
+  </ul> -->
 
-  <button class="m-3 btn btn-sm btn-danger">
-    Remove All
-  </button>
+  <table id="employees" *ngIf="employees">
+    <tbody>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Age</th>
+      <tr *ngFor='let employee of employees.data'>
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.employee_name }}</td>
+        <td>{{ employee.employee_salary }}</td>
+        <td>{{ employee.employee_age }}</td>
+        <td><a href="/employees/{{ employee.id }}/{{employee.employee_name}}/{{employee.employee_salary}}/{{employee.employee_age}}">Edit</a></td>
+        <td><a (click)="deleteEmployee(employee)">Delete</a></td>
+    </tbody>
+  </table>
 </div>

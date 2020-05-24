@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeServiceService } from '../Services/employee-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
@@ -6,10 +10,62 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-details.component.scss']
 })
 export class EmployeeDetailsComponent implements OnInit {
+  employee = {
+    name: '',
+    salary: '',
+    age: '',
+    id:''
+  };
+  submitted ='';
 
-  constructor() { }
+  constructor(private empService: EmployeeServiceService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.employee.id = this.route.snapshot.paramMap.get('id'); 
+    this.employee.name = this.route.snapshot.paramMap.get('name'); 
+    this.employee.salary = this.route.snapshot.paramMap.get('salary'); 
+    this.employee.age = this.route.snapshot.paramMap.get('age'); 
   }
 
+  updateEmployee(){
+    const data = {
+      name: this.employee.name,
+      salary: this.employee.salary,
+      age: this.employee.age,
+    };
+    
+    this.empService.updateEmployee(this.employee.id, data).subscribe(
+      data => {
+        this.toastr.success('Updated Succesfully');
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getEmployee(id) {
+    this.empService.getEmployeeById(id).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    // this.empService.getAllEmployees().subscribe(
+    //   data => {
+    //      data.;
+    //     this.employees = this.employees.filter(x => x.id == id);
+    //     debugger;
+    //   },
+    //   error => {
+    //     console.log(error)
+    //   }
+    // );
+  }
 }

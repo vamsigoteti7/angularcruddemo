@@ -7,8 +7,8 @@ import { EmployeeServiceService } from '../Services/employee-service.service';
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent implements OnInit {
-  
-  employees:any;
+
+  employees: any;
   title = '';
   currentIndex = -1;
 
@@ -20,12 +20,23 @@ export class EmployeeListComponent implements OnInit {
 
   getAllEmployees() {
     this.empService.getAllEmployees().subscribe(
-      data =>{ 
+      data => {
         this.employees = data;
-        console.log(this.employees);
-       },
-      error=>{console.log(error)}
+      },
+      error => { console.log(error) }
     );
   }
 
+  editEmployee(employee) {
+    
+  }
+
+  deleteEmployee(employee) {
+    this.empService.deleteEmployee(36).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => { console.log(error) }
+    );
+  }
 }

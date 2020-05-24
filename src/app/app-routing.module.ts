@@ -8,7 +8,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 const routes: Routes = [
   { path: '', redirectTo: 'employees', pathMatch: 'full' },
   { path: 'employees', component: EmployeeListComponent },
-  { path: 'employees/:id', component: EmployeeDetailsComponent },
+  { path: 'employees/:id/:name/:salary/:age', component: EmployeeDetailsComponent },
   { path: 'add', component: AddEmployeeComponent }
 ];
 
