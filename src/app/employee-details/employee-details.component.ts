@@ -47,26 +47,4 @@ export class EmployeeDetailsComponent implements OnInit {
       }
     );
   }
-
-  getEmployee(id) {
-    this.empService.getEmployeeById(id).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-
-    // this.empService.getAllEmployees().subscribe(
-    //   data => {
-    //      data.;
-    //     this.employees = this.employees.filter(x => x.id == id);
-    //     debugger;
-    //   },
-    //   error => {
-    //     console.log(error)
-    //   }
-    // );
-  }
 }

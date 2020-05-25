@@ -29,12 +29,8 @@ export class EmployeeListComponent implements OnInit {
     );
   }
 
-  editEmployee(employee) {
-    
-  }
-
   deleteEmployee(employee) {
-    this.empService.deleteEmployee(36).subscribe(
+    this.empService.deleteEmployee(employee.id).subscribe(
       data => {
         this.toastr.success('Employee Deleted Succesfully');
         location.reload();

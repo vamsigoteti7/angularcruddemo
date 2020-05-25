@@ -18,12 +18,6 @@ export class EmployeeServiceService {
     return this.http.post<any>(`${baseUrl}/create` ,data);
   }
 
-  getEmployeeById(id){
-    
-    return this.http.get<any>(`http://dummy.restapiexample.com/api/v1/employee/1`);
-    // return this.http.get(`${baseUrl}/employee/${id}`);
-  }
-
   updateEmployee(id,data){
     return this.http.put(`${baseUrl}/update/${id}`, data);
   }
