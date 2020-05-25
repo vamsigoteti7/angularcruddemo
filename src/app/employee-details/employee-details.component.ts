@@ -40,6 +40,7 @@ export class EmployeeDetailsComponent implements OnInit {
     this.empService.updateEmployee(this.employee.id, data).subscribe(
       data => {
         this.toastr.success('Updated Succesfully');
+        this.router.navigate(['']);
       },
       error => {
         console.log(error);

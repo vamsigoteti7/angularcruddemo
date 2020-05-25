@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../Services/employee-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,7 +14,7 @@ export class EmployeeListComponent implements OnInit {
   title = '';
   currentIndex = -1;
 
-  constructor(private empService: EmployeeServiceService) { }
+  constructor(private empService: EmployeeServiceService,private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllEmployees();
@@ -34,7 +36,8 @@ export class EmployeeListComponent implements OnInit {
   deleteEmployee(employee) {
     this.empService.deleteEmployee(36).subscribe(
       data => {
-        console.log(data);
+        this.toastr.success('Employee Deleted Succesfully');
+        location.reload();
       },
       error => { console.log(error) }
     );

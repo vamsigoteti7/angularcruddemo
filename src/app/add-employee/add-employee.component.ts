@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../Services/employee-service.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -18,7 +19,7 @@ export class AddEmployeeComponent implements OnInit {
   submitted = false;
 
   constructor(private http:HttpClient, private empService: EmployeeServiceService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +34,7 @@ export class AddEmployeeComponent implements OnInit {
       data => {
         this.submitted = true;
         this.toastr.success('Employee Added Succesfully');
+        this.router.navigate(['']);
       },
       error => {
         console.log(error);
